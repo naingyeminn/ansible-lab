@@ -26,3 +26,8 @@ $ vagrant plugin install vagrant-dns
 $ vagrant up
 ```
 
+> Please be warned that the total download size of lab data will be approximately 3GB.
+
+## Ansible Tower License
+
+Please register and get License at [https://www.ansible.com/workshop-license](https://www.ansible.com/workshop-license)
