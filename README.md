@@ -7,6 +7,8 @@
 - HDD: 10GB of Free Space
 - OS: Linux / MacOS / Windows
 
+> Intel VT-X or Virtualization Technology must be enabled
+
 ## Prerequisites
 
 Please install following softwares -
@@ -55,10 +57,13 @@ Vagrant will create 3 VM Boxes in VirtualBox.
 - RAM: 512MB
 - IP: 192.168.101.21
 
-> Please be warned that the total download size of lab data will be approximately 3GB.
+If you have more CPU Cores and RAM you can customize the VM resources in `Vagrantfile` for better performance.
 
+
+> Please be warned that the total download size of lab data will be approximately 3GB.
 
 
 ## Ansible Tower License
 
 Please register and get License at [https://www.ansible.com/workshop-license](https://www.ansible.com/workshop-license)
+
