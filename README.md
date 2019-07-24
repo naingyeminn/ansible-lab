@@ -28,6 +28,8 @@ References:
 
 ## Setting up Lab Environment
 
+### Creating/Starting VMs
+
 Run following commands in Terminal (Linux / MacOS) or CMD / Git Bash (Windows)
 
 ```sh
@@ -61,6 +63,42 @@ If you have more CPU Cores and RAM you can customize the VM resources in `Vagran
 
 
 > Please be warned that the total download size of lab data will be approximately 3GB.
+
+### Taking snapshots
+
+```sh
+vagrant snapshot save tower ready
+vagrant snapshot save gitlab ready
+vagrant snapshot save server01 ready
+```
+
+### Restoring snapshots
+
+```sh
+vagrant snapshot restore tower ready
+vagrant snapshot restore gitlab ready
+vagrant snapshot restore server01 ready
+```
+
+### Shutting down VMs
+
+```sh
+vagrant halt
+```
+
+### Start/Stop VMs one by one
+
+```sh
+vagrant up tower
+vagrant up gitlab
+vagrant up server01
+```
+
+```sh
+vagrant halt tower
+vagrant halt gitlab
+vagrant halt server01
+```
 
 
 ## Ansible Tower License
