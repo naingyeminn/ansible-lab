@@ -64,6 +64,8 @@ If you have more CPU Cores and RAM you can customize the VM resources in `Vagran
 
 > Please be warned that the total download size of lab data will be approximately 3GB.
 
+## More about Vagrant
+
 ### Taking snapshots
 
 ```sh
