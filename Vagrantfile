@@ -27,7 +27,15 @@ Vagrant.configure("2") do |config|
 			vb.memory = "2048"
 		end
 		gitlab.vm.provision "shell", path: "generate_hosts.sh"
-		gitlab.vm.provision "shell", path: "provisioner.sh"
+		#gitlab.vm.provision "shell", path: "provisioner.sh"
+		gitlab.vm.provision "shell", inline: <<-SHELL
+			sudo systemctl disable gitlab-runsvdir.service
+			sudo gitlab-ctl stop
+			sudo yum install epel-release
+			sudo yum -y remove git
+			sudo yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
+			sudo yum -y install git2u gitlab-runner
+		SHELL
 	end
 
 	config.vm.define "server01" do |svr|
