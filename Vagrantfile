@@ -27,11 +27,7 @@ Vagrant.configure("2") do |config|
 			vb.memory = "1024"
 		end
 		gitlab.vm.provision "shell", path: "generate_hosts.sh"
-		gitlab.vm.provision "shell", inline: <<-SHELL
-			sudo yum install epel-release
-			sudo yum -y install  https://centos7.iuscommunity.org/ius-release.rpm
-			sudo yum -y install git2u gitlab-runner
-		SHELL
+		gitlab.vm.provision "shell", path: "provisioner.sh"
 	end
 
 	config.vm.define "server01" do |svr|
@@ -42,6 +38,23 @@ Vagrant.configure("2") do |config|
 		svr.vm.network "private_network", ip: "192.168.101.21"
 		svr.vm.provider "virtualbox" do |vb|
 			vb.name = "server01"
+			vb.memory = "1024"
+		end
+		svr.vm.provision "shell", path: "generate_hosts.sh"
+		svr.vm.provision "shell", inline: <<-SHELL
+			sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+			sudo systemctl restart sshd
+		SHELL
+	end
+
+	config.vm.define "dev01" do |svr|
+		svr.vm.box = "centos/7"
+		svr.vm.hostname = "server01.linuxlab.lan"
+		#svr.dns.tld = "lan"
+		#svr.dns.patterns = "server01.linuxlab.lan"
+		svr.vm.network "private_network", ip: "192.168.101.31"
+		svr.vm.provider "virtualbox" do |vb|
+			vb.name = "dev01"
 			vb.memory = "1024"
 		end
 		svr.vm.provision "shell", path: "generate_hosts.sh"
