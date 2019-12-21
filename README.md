@@ -50,13 +50,13 @@ Vagrant will create 3 VM Boxes in VirtualBox.
 #### gitlab 
 
 - CPU: 2
-- RAM: 2GB
+- RAM: 1GB
 - IP: 192.168.101.11
 
 #### server01
 
 - CPU: 1
-- RAM: 512MB
+- RAM: 1GB
 - IP: 192.168.101.21
 
 If you have more CPU Cores and RAM you can customize the VM resources in `Vagrantfile` for better performance.
